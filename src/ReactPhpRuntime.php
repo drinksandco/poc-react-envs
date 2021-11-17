@@ -12,6 +12,7 @@ use Symfony\Component\Runtime\GenericRuntime;
 use Symfony\Component\Runtime\Resolver\ClosureResolver;
 use Symfony\Component\Runtime\ResolverInterface;
 use Symfony\Component\Runtime\RunnerInterface;
+use Trowski\ReactFiber\FiberLoop;
 
 /**
  * @psalm-type ReactPhpOptions array{port: int}
@@ -33,9 +34,10 @@ final class ReactPhpRuntime extends GenericRuntime
     public function getRunner(?object $application): RunnerInterface
     {
         if ($application instanceof RequestHandlerInterface) {
-            $serverFactory = new ReactHttpServerFactory();
+            $loop = new FiberLoop(Loop::get());
+            $serverFactory = new ReactHttpServerFactory($loop);
             return new ReactPHPRunner(
-                Loop::get(),
+                $loop,
                 $serverFactory->create($application),
                 sprintf('0.0.0.0:%s', $this->port)
             );

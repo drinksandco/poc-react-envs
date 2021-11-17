@@ -4,11 +4,14 @@ RUN apt-get update && apt-get install -y git zip zlib1g-dev libicu-dev g++ libpq
 
 RUN docker-php-ext-install pdo_pgsql bcmath iconv pcntl mbstring intl calendar sockets
 
-RUN pecl install -o -f redis \
-&& rm -rf /tmp/pear \
-&& docker-php-ext-enable redis
+RUN git clone https://github.com/amphp/ext-fiber \
+  && cd ext-fiber && phpize && ./configure && make && make install \
+  && docker-php-ext-enable fiber
 
-COPY ./conf.d/redis.ini $PHP_INI_DIR/conf.d/redis.ini
+#RUN apt-get update && apt-get install -y libev-dev
+#RUN pecl install -o -f ev \
+#  && rm -rf /tmp/pear \
+#  && docker-php-ext-enable ev
 
 RUN usermod -u 1000 www-data
 

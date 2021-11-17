@@ -19,7 +19,9 @@ $foo = new class implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return new Response(200, [], 'Hello World!!!');
+        return new Response(200, [
+            'Content-Type' => 'application/json'
+        ], $request->getAttribute('weather'));
     }
 };
 

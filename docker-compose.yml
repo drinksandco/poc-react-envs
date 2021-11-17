@@ -1,22 +1,22 @@
 version: "3"
 
-volumes:
-  redis:
-
 services:
   php:
     build: ./docker/php/
     ports:
       - 5555:5555
     links:
-      - redis
+      - test_external_client
     volumes:
-      - redis:/var/lib/redis
       - ./:/opt
     working_dir: /opt
     command: ["php", "/opt/index.php"]
 
-  redis:
-    image: redis:latest
+  test_external_client:
+    build: ./docker/php/
+    ports:
+      - 8080:8080
     volumes:
-      - redis:/var/lib/redis
+      - ./:/opt
+    working_dir: /opt
+    command: ["php", "/opt/test.php"]

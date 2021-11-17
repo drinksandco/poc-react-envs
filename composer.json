@@ -9,7 +9,8 @@
         "psr/http-server-handler": "^1.0",
         "psr/http-server-middleware": "^1.0",
         "react/http": "^1.5",
-        "symfony/runtime": "^5.3"
+        "symfony/runtime": "^5.3",
+        "trowski/react-fiber": "@dev"
     },
     "require-dev": {
         "icanhazstring/composer-unused": "^0.7.5",

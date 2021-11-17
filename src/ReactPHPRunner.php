@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drinksco\React;
 
-use Psr\Http\Server\RequestHandlerInterface;
 use React\EventLoop\LoopInterface;
 use React\Http\HttpServer;
 use React\Socket\SocketServer;
