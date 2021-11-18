@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  php:
+    build: ./docker/php/
+    ports:
+      - 5555:5555
+    links:
+      - test_external_client
+    volumes:
+      - ./:/opt
+    working_dir: /opt
+    command: ["php", "/opt/index.php"]
+
+  test_external_client:
+    build: ./docker/php/
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/opt
+    working_dir: /opt
+    command: ["php", "/opt/test.php"]
