@@ -34,8 +34,8 @@ final class ReactPhpRuntime extends GenericRuntime
     public function getRunner(?object $application): RunnerInterface
     {
         if ($application instanceof RequestHandlerInterface) {
-            $loop = new FiberLoop(Loop::get());
-            $serverFactory = new ReactHttpServerFactory($loop);
+            $loop = Loop::get();
+            $serverFactory = new ReactHttpServerFactory();
             return new ReactPHPRunner(
                 $loop,
                 $serverFactory->create($application),
