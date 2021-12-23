@@ -7,6 +7,8 @@ services:
       - 5555:5555
     links:
       - test_external_client
+    environment:
+      XDEBUG_MODE: "off"
     volumes:
       - ./:/opt
     working_dir: /opt
@@ -16,6 +18,8 @@ services:
     build: ./docker/php/
     ports:
       - 8080:8080
+    environment:
+      XDEBUG_MODE: "off"
     volumes:
       - ./:/opt
     working_dir: /opt

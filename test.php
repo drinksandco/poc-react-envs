@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Drinksco\React\ReactHttpServerFactory;
-use Drinksco\React\StreamingRequestFiberMiddleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
