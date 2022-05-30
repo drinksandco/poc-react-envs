@@ -10,7 +10,7 @@
         "psr/http-server-middleware": "^1.0",
         "react/async": "@dev",
         "react/http": "^1.5",
-        "symfony/runtime": "^5.3"
+        "symfony/runtime": "^6.1"
     },
     "require-dev": {
         "icanhazstring/composer-unused": "^0.7.5",
